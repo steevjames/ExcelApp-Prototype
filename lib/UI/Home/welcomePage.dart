@@ -6,8 +6,8 @@ import 'Utils/constants.dart';
 import 'Utils/data.dart';
 
 class WelcomeCard extends StatelessWidget {
-  double cardHeight = screenSize.height / 2.1;
-  Radius cardRoundness = Radius.circular(32);
+  final double cardHeight = screenSize.height / 2.1;
+  final Radius cardRoundness = Radius.circular(32);
 
   @override
   Widget build(BuildContext context) {
