@@ -160,7 +160,6 @@ class HighLightsState extends State<HighLights> {
                     setState(() {
                       isLiked[index] = !isLiked[index];
                     });
-                    ;
                   }))
         ],
       ),
@@ -169,14 +168,14 @@ class HighLightsState extends State<HighLights> {
 }
 
 class Categories extends StatelessWidget {
-  var headingStyle = TextStyle(
+  final headingStyle = TextStyle(
       fontWeight: FontWeight.w700, fontSize: 24, fontFamily: pfontFamily);
-  var titleStyle = TextStyle(
+  final titleStyle = TextStyle(
       color: Colors.white,
       fontFamily: pfontFamily,
       fontSize: 28,
       fontWeight: FontWeight.w600);
-  var contentStyle = TextStyle(
+  final contentStyle = TextStyle(
       color: Colors.white,
       fontFamily: sfontFamily,
       fontSize: 14,
@@ -214,9 +213,10 @@ class Categories extends StatelessWidget {
                   cardImage(categoriesMap[index]["imageUrl"]),
                   categoryCardContent(categoriesMap[index], context)
                 ])),
-                onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => FakePage()));
-                },
+            onTap: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => fakePage()));
+            },
           )),
     );
   }
@@ -293,7 +293,7 @@ cardImage(String url) {
   ]);
 }
 
-Widget FakePage() {
+Widget fakePage() {
   return Scaffold(
     backgroundColor: Colors.white,
     appBar: AppBar(
