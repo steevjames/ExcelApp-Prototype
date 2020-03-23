@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import './UI/Home/home.dart';
 import './UI/Timeline/timeline.dart';
+import './UI/EventPage/eventPage.dart';
 
 void main() => runApp(MyApp());
 
@@ -36,12 +37,18 @@ class DemoPage extends StatelessWidget {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) => Home()));
                   }),
-              //
               RaisedButton(
                   child: Text('Timeline'),
                   onPressed: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) => Timeline()));
+                  
+                  }),
+              RaisedButton(
+                  child: Text('Event Page'),
+                  onPressed: () {
+                      Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => EventPage()));
                   }),
             ],
           ),
