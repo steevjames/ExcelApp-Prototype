@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import './UI/Home/home.dart';
 import './UI/Timeline/timeline.dart';
 import './UI/EventPage/eventPage.dart';
+import './UI/Competitions/competitionsScreen.dart';
 
 void main() => runApp(MyApp());
 
@@ -49,6 +50,12 @@ class DemoPage extends StatelessWidget {
                   onPressed: () {
                       Navigator.push(context,
                         MaterialPageRoute(builder: (context) => EventPage()));
+                  }),
+                                RaisedButton(
+                  child: Text('Competitions Page'),
+                  onPressed: () {
+                      Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Competitions()));
                   }),
             ],
           ),

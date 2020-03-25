@@ -64,12 +64,12 @@ class HomeState extends State<Home> {
 //The BackgroundImage shown in first Page
 
 backgroundImage() {
-  var backgroundImageURL =
+  String backgroundImageURL =
       "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80";
 
   //for gradient overlay
-  var color1 = Color(0x4d09122b);
-  var color2 = Color(0x80111e42);
+  Color color1 = Color(0x4d09122b);
+  Color color2 = Color(0x80111e42);
 
   return Stack(children: <Widget>[
     Container(

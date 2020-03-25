@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import './generateTimetableList.dart';
 
-var c = 1;
+int c = 1;
 
 class Timeline extends StatefulWidget {
   @override
@@ -11,7 +11,7 @@ class Timeline extends StatefulWidget {
 }
 
 class _TimelineState extends State<Timeline> {
-  var timeTableData = sampleDataDay1;
+  List<Map<String, String>> timeTableData = sampleDataDay1;
   String daynumber = '01';
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class _TimelineState extends State<Timeline> {
             children: <Widget>[
               SafeArea(child: Center()),
               Container(
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 25),
                 decoration: BoxDecoration(color: Colors.grey[200]),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -50,7 +50,7 @@ class _TimelineState extends State<Timeline> {
                         ],
                       ),
                     ),
-                    SizedBox(height: 20),
+                    SizedBox(height: 10),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
@@ -106,7 +106,10 @@ class _TimelineState extends State<Timeline> {
                 Text(
                   'Day',
                   textAlign: TextAlign.center,
-                  style: TextStyle(fontWeight: FontWeight.bold, fontFamily: pfontFamily, fontSize: 15),
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontFamily: pfontFamily,
+                      fontSize: 15),
                 ),
                 Text(
                   dayno,
@@ -124,7 +127,7 @@ class _TimelineState extends State<Timeline> {
   }
 }
 
-var sampleDataDay1 = [
+List<Map<String, String>> sampleDataDay1 = [
   {
     'name': 'Robosoccer Day 1',
     'content': '10AM - 4PM | Amphitheatre',
@@ -144,7 +147,7 @@ var sampleDataDay1 = [
   },
   {
     'name': 'Next Event',
-    'content': 'Amphitheatre\n10AM - 4PM',
+    'content': '10AM - 4PM | Amphitheatre',
     'image':
         'https://free4kwallpapers.com/uploads/wallpaper/neon-retro-computers-by-lorenzo-herrera-wallpaper-1024x768-wallpaper.jpg'
   },
@@ -171,7 +174,7 @@ var sampleDataDay1 = [
     'image': 'https://wallpapercave.com/wp/pZPTMMO.jpg'
   },
 ];
-var sampleDataDay2 = [
+List<Map<String, String>> sampleDataDay2 = [
   {
     'name': 'Day 2 Soccer',
     'content': '10AM - 4PM | Amphitheatre',
@@ -196,7 +199,7 @@ var sampleDataDay2 = [
         'https://free4kwallpapers.com/uploads/wallpaper/neon-retro-computers-by-lorenzo-herrera-wallpaper-1024x768-wallpaper.jpg'
   },
 ];
-var sampleDataDay3 = [
+List<Map<String, String>> sampleDataDay3 = [
   {
     'name': 'Robosoccer Day3',
     'content': '10AM - 4PM | Amphitheatre',

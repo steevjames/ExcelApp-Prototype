@@ -1,29 +1,33 @@
 import 'package:excelapp_prototype/UI/EventPage/backgroundImage.dart';
 import 'package:excelapp_prototype/UI/EventPage/eventDescription.dart';
 import 'package:flutter/material.dart';
-import 'constants.dart';
+
+String fontBold = 'Quicksand-Bold';
+String fontLight = 'Quciksand-Light';
 
 class MoreDetails extends StatefulWidget {
+  final eventDetails;
+  MoreDetails({Key key, @required this.eventDetails}) : super(key: key);
   @override
   State<StatefulWidget> createState() {
-    return MoreDetailsState();
+    return MoreDetailsState(eventDetails);
   }
 }
 
 class MoreDetailsState extends State<MoreDetails> {
-  
+  var eventDetails;
+  MoreDetailsState(this.eventDetails);
   //Stores the current active tab in more details
   String activeTab = 'About';
 
   //All paddings made as multiples of _minpadding
-  var _minpadding = 5.0;
+  double _minpadding = 5.0;
 
   @override
   Widget build(BuildContext context) {
     double deviceHeight = MediaQuery.of(context).size.height;
     return Scaffold(
-        body:Stack(children: <Widget>[
-
+        body: Stack(children: <Widget>[
       // Background Image
       getBackgroundImage(eventDetails, [
         Color.fromRGBO(0, 0, 0, 1),
@@ -36,11 +40,10 @@ class MoreDetailsState extends State<MoreDetails> {
         children: <Widget>[
           Padding(
               padding: EdgeInsets.only(
-                  left: _minpadding * 7, top: deviceHeight * 0.2),
+                  left: _minpadding * 7, top: deviceHeight * 0.15),
               child: Row(
                 // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-      
                   //Event Name Details
                   Expanded(
                     child: Hero(
@@ -84,10 +87,9 @@ class MoreDetailsState extends State<MoreDetails> {
 
           // More details card
           Container(
-            height: deviceHeight * .57,
-            padding: EdgeInsets.only(top:_minpadding),
-              child: 
-              Hero(
+              height: deviceHeight * .57,
+              padding: EdgeInsets.only(top: _minpadding),
+              child: Hero(
                   tag: 'Card',
                   child: Card(
                       elevation: 5,
@@ -97,46 +99,40 @@ class MoreDetailsState extends State<MoreDetails> {
                               topRight: Radius.circular(45))),
                       child: Container(
                           child: Column(
-                            children: <Widget>[
-                              SizedBox(height:_minpadding),
-                              SingleChildScrollView(
-                                scrollDirection: Axis.horizontal,
-                                child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
-                                    children: <Widget>[
-                                      //Tabs in the More Details section
-                                      getTab('About', activeTab),
-                                      getTab('Format', activeTab),
-                                      getTab('Rules', activeTab),
-                                      getTab('Contacts', activeTab),
-                                    ]),
-                              ),
-                              Column(
+                        children: <Widget>[
+                          SizedBox(height: 10),
+                          SingleChildScrollView(
+                            scrollDirection: Axis.horizontal,
+                            child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
                                 children: <Widget>[
-                                  Padding(
-                                  padding: EdgeInsets.only(
-                                      top: _minpadding * 3,
-                                      left: _minpadding * 6,
-                                      right: _minpadding * 6,
-                                      bottom: _minpadding * 3),
-                                  child: 
-                                  
-                                  Text(
-                                    eventDetails[activeTab],
-                                    style: TextStyle(
-                                      fontFamily: fontLight,
-                                      color: Color.fromRGBO(23, 18, 41, 1),
-                                      fontSize: 17.0,
-                                      fontWeight: FontWeight.w300,
-                                    ),
-                                
-                                  )),
-                                ]
-                              )
-                                
-                            ],
-                          ))))),
+                                  //Tabs in the More Details section
+                                  getTab('About', activeTab),
+                                  getTab('Format', activeTab),
+                                  getTab('Rules', activeTab),
+                                  getTab('Contacts', activeTab),
+                                ]),
+                          ),
+                          Column(children: <Widget>[
+                            Padding(
+                                padding: EdgeInsets.only(
+                                    top: _minpadding * 3,
+                                    left: _minpadding * 6,
+                                    right: _minpadding * 6,
+                                    bottom: _minpadding * 3),
+                                child: Text(
+                                  eventDetails[activeTab],
+                                  style: TextStyle(
+                                    fontFamily: fontLight,
+                                    color: Color.fromRGBO(23, 18, 41, 1),
+                                    fontSize: 17.0,
+                                    fontWeight: FontWeight.w300,
+                                  ),
+                                )),
+                          ])
+                        ],
+                      ))))),
         ],
       )),
     ]));
@@ -146,7 +142,8 @@ class MoreDetailsState extends State<MoreDetails> {
   Widget getTab(String tabName, String active) {
     bool isClicked = active == tabName;
     return Padding(
-      padding: EdgeInsets.all(_minpadding),
+      // padding: EdgeInsets.all(_minpadding),
+      padding: EdgeInsets.all(0),
       child: ButtonTheme(
         minWidth: _minpadding * 5,
         height: _minpadding * 8,
@@ -188,7 +185,7 @@ class MoreDetailsState extends State<MoreDetails> {
       return Text(text,
           style: TextStyle(
               height: 1.0,
-              fontSize: 21.0,
+              fontSize: 18.0,
               fontFamily: fontLight,
               fontWeight: FontWeight.w400,
               color: Color.fromRGBO(23, 18, 41, 0.4)));
@@ -200,7 +197,7 @@ class MoreDetailsState extends State<MoreDetails> {
     return Container(
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(30),
-            border: Border.all(color: Colors.white, width: 2)),
+            border: Border.all(color: Color(0x99ffffff), width: 1)),
         child: IconButton(
             iconSize: 32,
             color: Colors.white,
