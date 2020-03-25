@@ -111,14 +111,20 @@ class HighLightsState extends State<HighLights> {
         autoPlay: true,
         autoPlayInterval: Duration(seconds: autoplayseconds),
         itemBuilder: (BuildContext build, index) {
-          return Card(
-              margin: EdgeInsets.all(4),
-              child: Stack(
-                children: <Widget>[
-                  cardImage(highLightEvents[index].imageUrl),
-                  highLightCardContent(highLightEvents[index], index)
-                ],
-              ));
+          return GestureDetector(
+            child: Card(
+                margin: EdgeInsets.all(4),
+                child: Stack(
+                  children: <Widget>[
+                    cardImage(highLightEvents[index].imageUrl),
+                    highLightCardContent(highLightEvents[index], index)
+                  ],
+                )),
+            onTap: () {
+              //Insert Function
+              print("U tapped ${highLightEvents[index].eventName}");
+            },
+          );
         });
   }
 
@@ -248,14 +254,16 @@ class Categories extends StatelessWidget {
               )
             ],
           ),
-          Container(
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(30),
-                border: Border.all(color: Colors.white, width: 2)),
-            child: Icon(
-              Icons.navigate_next,
-              size: 40,
-              color: Colors.white,
+          Flexible(
+            child: Container(
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(30),
+                  border: Border.all(color: Colors.white, width: 2)),
+              child: Icon(
+                Icons.navigate_next,
+                size: 40,
+                color: Colors.white,
+              ),
             ),
           )
         ],

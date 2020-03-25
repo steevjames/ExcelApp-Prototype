@@ -1,3 +1,4 @@
+import 'package:excelapp_prototype/UI/Home/Utils/constants.dart';
 import 'package:flutter/material.dart';
 
 import './generateTimetableList.dart';
@@ -11,7 +12,7 @@ class Timeline extends StatefulWidget {
 
 class _TimelineState extends State<Timeline> {
   var timeTableData = sampleDataDay1;
-  String daynumber = 'Day 1';
+  String daynumber = '01';
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -35,8 +36,9 @@ class _TimelineState extends State<Timeline> {
                             'Timeline',
                             style: TextStyle(
                                 fontSize: 30,
+                                fontFamily: pfontFamily,
                                 color: Color(0xff282849),
-                                fontWeight: FontWeight.w400),
+                                fontWeight: FontWeight.w600),
                           ),
                           // Text(
                           //   daynumber,
@@ -56,7 +58,7 @@ class _TimelineState extends State<Timeline> {
                           onTap: () {
                             setState(() {
                               timeTableData = sampleDataDay1;
-                              daynumber = 'Day 1';
+                              daynumber = '01';
                             });
                           },
                           child: _day('01'),
@@ -66,18 +68,17 @@ class _TimelineState extends State<Timeline> {
                           onTap: () {
                             setState(() {
                               timeTableData = sampleDataDay2;
-                              daynumber = 'Day 2';
+                              daynumber = '02';
                             });
                           },
-                          child:
-                              Transform.scale(scale: 1.12, child: _day('02')),
+                          child: _day('02'),
                         ),
                         SizedBox(width: 15),
                         InkWell(
                           onTap: () {
                             setState(() {
                               timeTableData = sampleDataDay3;
-                              daynumber = 'Day 3';
+                              daynumber = '03';
                             });
                           },
                           child: _day('03'),
@@ -94,32 +95,33 @@ class _TimelineState extends State<Timeline> {
       ),
     );
   }
-}
 
-Widget _day(dayno) {
-  return Container(
-    padding: EdgeInsets.fromLTRB(15, 22, 15, 22),
-    decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(40),
-        boxShadow: [
-          new BoxShadow(
-              color: Colors.black, blurRadius: 20.0, spreadRadius: -15),
-        ]),
-    child: Column(
-      children: <Widget>[
-        Text(
-          'Day',
-          textAlign: TextAlign.center,
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
-        ),
-        Text(
-          dayno,
-          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-        ),
-      ],
-    ),
-  );
+  Widget _day(dayno) {
+    return Transform.scale(
+      child: Card(
+          child: Container(
+            padding: EdgeInsets.fromLTRB(15, 22, 15, 22),
+            child: Column(
+              children: <Widget>[
+                Text(
+                  'Day',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontWeight: FontWeight.bold, fontFamily: pfontFamily, fontSize: 15),
+                ),
+                Text(
+                  dayno,
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+              ],
+            ),
+          ),
+          elevation: dayno == daynumber ? 5 : 1,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(40),
+          )),
+      scale: dayno == daynumber ? 1.15 : 1,
+    );
+  }
 }
 
 var sampleDataDay1 = [
@@ -146,7 +148,7 @@ var sampleDataDay1 = [
     'image':
         'https://free4kwallpapers.com/uploads/wallpaper/neon-retro-computers-by-lorenzo-herrera-wallpaper-1024x768-wallpaper.jpg'
   },
-    {
+  {
     'name': 'Robosoccer Day 1',
     'content': '10AM - 4PM | Amphitheatre',
     'image':
@@ -157,7 +159,7 @@ var sampleDataDay1 = [
     'content': '10AM - 4PM | Amphitheatre',
     'image': 'https://wallpapercave.com/wp/pZPTMMO.jpg'
   },
-    {
+  {
     'name': 'Robosoccer Day 1',
     'content': '10AM - 4PM | Amphitheatre',
     'image':

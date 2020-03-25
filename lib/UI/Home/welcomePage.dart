@@ -27,7 +27,7 @@ class WelcomeCard extends StatelessWidget {
             Align(
               alignment: Alignment.center,
               child: Padding(
-                padding: EdgeInsets.fromLTRB(24, 24, 24, 16),
+                padding: EdgeInsets.fromLTRB(24, 8, 24, 0),
                 child: pill(),
               ),
             ),
@@ -47,10 +47,14 @@ class WelcomeCard extends StatelessWidget {
 
   pill() {
     return Container(
+      //pill shaped
+
       width: 48,
-      height: 8,
-      decoration: BoxDecoration(
-          color: primaryColor, borderRadius: BorderRadius.circular(16)),
+      // decoration: BoxDecoration(
+      //     color: primaryColor, borderRadius: BorderRadius.circular(16)),
+
+      //arrow
+      child: Icon(Icons.keyboard_arrow_up, size: 48, color: primaryColor),
     );
   }
 

@@ -32,23 +32,33 @@ class HomeState extends State<Home> {
         },
         controller: _pageController,
         children: <Widget>[
-          WelcomeCard(),
-          WillPopScope(
-              child: HomePage(), onWillPop: () => onWillPop())
+          GestureDetector(
+            child: WelcomeCard(),
+            onTap: () {
+              _pageController.animateToPage(1,
+                  duration: Duration(milliseconds: 500),
+                  curve: Curves.easeInOut);
+            },
+          ),
+          WillPopScope(child: HomePage(), onWillPop: () => onWillPop())
         ],
         scrollDirection: Axis.vertical,
       )
     ]));
   }
 
-  Future<bool> onWillPop() async{
-    if(_pageController.page ==0){
+  Future<bool> onWillPop() async {
+    if (_pageController.page == 0) {
       return true;
-    } else{
-    _pageController.animateToPage(0, curve: Curves.easeInOut, duration: Duration(milliseconds: 500), );}
-  return false;
+    } else {
+      _pageController.animateToPage(
+        0,
+        curve: Curves.easeInOut,
+        duration: Duration(milliseconds: 500),
+      );
+    }
+    return false;
   }
-  
 }
 
 //The BackgroundImage shown in first Page
