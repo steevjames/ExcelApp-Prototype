@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:excelapp_prototype/API/Events/eventsList_Class.dart';
 import 'package:flutter/material.dart';
 
@@ -16,26 +17,26 @@ class _TestAPIState extends State<TestAPI> {
       ),
       body: FutureBuilder(
         future: EventsList.fetchEvents(),
-        builder: (context,snapshot) {
-          if(snapshot.hasData)
-            return Expanded(
-              child: ListView.builder(
-                itemCount: snapshot.data.length,
-                itemBuilder: (context,index) {
-                  Event event = snapshot.data[index];
-                  return Card(
-                    child: Column(
-                      children: <Widget>[
-                        Text(event.id.toString()),
-                        Text(event.name),
-                        Text(event.icon),
-                        Text(event.category),
-                      ],
-                    ),
-                  );
-                },
-              ),
+        builder: (context, snapshot) {
+          if (snapshot.hasData)
+            return ListView.builder(
+              itemCount: snapshot.data.length,
+              itemBuilder: (context, index) {
+                Event event = snapshot.data[index];
+                return Card(
+                  child: Column(
+                    children: <Widget>[
+                      Text(event.id.toString()),
+                      Text(event.name),
+                      CachedNetworkImage(imageUrl: event.icon),
+                      Text(event.category),
+                    ],
+                  ),
+                );
+              },
             );
+          else
+            return Center(child: CircularProgressIndicator());
         },
       ),
     );
