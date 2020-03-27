@@ -1,3 +1,4 @@
+import 'package:excelapp_prototype/API/testUI.dart';
 import 'package:flutter/material.dart';
 import './UI/Home/home.dart';
 import './UI/Timeline/timeline.dart';
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: DemoPage(),
+      home: TestAPI(),
     );
   }
 }
