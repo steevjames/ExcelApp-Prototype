@@ -26,6 +26,7 @@ class Event {
 
   Event({this.id, this.name, this.icon, this.category});
 
+
   factory Event.fromJson(Map<String, dynamic> json) {
     return Event(
       id: json['id'],
@@ -33,5 +34,14 @@ class Event {
       icon: json['icon'],
       category: json['category'],
     );
+  }
+
+  Map<String,dynamic> toJson() {
+    return ({
+      'id'  : id,
+      'name': name,
+      'icon': icon,
+      'category': category,
+    });
   }
 }
