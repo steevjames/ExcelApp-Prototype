@@ -5,7 +5,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import '../Home/Utils/constants.dart';
 import '../Home/Utils/data.dart';
 import '../Home/Utils/models.dart';
-import 'package:flutter/material.dart';
 
 class RegisteredPage extends StatefulWidget {
   @override
@@ -38,8 +37,8 @@ class RegisteredPageState extends State<RegisteredPage> {
     for (int i = 0; i < highLightsMap.length; i++) {
       favEvents.add(Event.fromMapObject(highLightsMap[i]));
     }
-    print("Favourite: ${favEvents.length}");
-    favListBuilder();
+    print("Tapped: ${favEvents.length}");
+    registeredListBuilder();
   }
 
   @override
@@ -49,36 +48,34 @@ class RegisteredPageState extends State<RegisteredPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[Padding(padding: EdgeInsets.all(12))] + favListBuilder(),
+          children: <Widget>[Padding(padding: EdgeInsets.all(12))] +
+              registeredListBuilder(),
         ));
   }
 
-  favListBuilder() {
+  registeredListBuilder() {
     var favListWidget = List<Widget>();
     for (int i = 0; i < favEvents.length; i++) {
-      favListWidget.add(
-         GestureDetector(
-            child: Container(
-              padding: EdgeInsets.symmetric(vertical: 6, horizontal:16),
-              height: cardHeight,
-              child: Card(
-                  margin: EdgeInsets.all(4),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(cardRoundness)
-                  ),
-                  child: Stack(
-                    children: <Widget>[
-                      cardImage(favEvents[i].imageUrl),
-                      highLightCardContent(favEvents[i], i)
-                    ],
-                  )),
-            ),
-            onTap: () {
-              //Insert Function
-              print("U tapped ${favEvents[i].eventName}");
-            },
-          )
-      );
+      favListWidget.add(GestureDetector(
+        child: Container(
+          padding: EdgeInsets.symmetric(vertical: 6, horizontal: 16),
+          height: cardHeight,
+          child: Card(
+              margin: EdgeInsets.all(4),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(cardRoundness)),
+              child: Stack(
+                children: <Widget>[
+                  cardImage(favEvents[i].imageUrl),
+                  highLightCardContent(favEvents[i], i)
+                ],
+              )),
+        ),
+        onTap: () {
+          //Insert Function
+          print("Registered of ${favEvents[i].eventName}");
+        },
+      ));
     }
 
     return favListWidget;

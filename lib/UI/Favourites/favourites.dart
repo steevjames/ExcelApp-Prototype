@@ -1,4 +1,4 @@
-import 'package:excelapp_prototype/UI/Favourites/registeredPage.dart';
+import './registeredPage.dart';
 
 import '../Home/Utils/constants.dart';
 import 'package:flutter/material.dart';

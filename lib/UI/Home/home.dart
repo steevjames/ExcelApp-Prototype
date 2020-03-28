@@ -4,7 +4,8 @@ import 'Utils/constants.dart';
 import 'welcomePage.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
-import 'homePage.dart';
+// import 'homePage.dart';
+import '../../Navigation/customNavigation.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -40,7 +41,8 @@ class HomeState extends State<Home> {
                   curve: Curves.easeInOut);
             },
           ),
-          WillPopScope(child: HomePage(), onWillPop: () => onWillPop())
+          // WillPopScope(child: HomePage(), onWillPop: () => onWillPop())
+        CustomNavigator()
         ],
         scrollDirection: Axis.vertical,
       )

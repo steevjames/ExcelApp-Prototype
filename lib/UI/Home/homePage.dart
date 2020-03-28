@@ -1,4 +1,4 @@
-import 'package:excelapp_prototype/UI/Home/profile.dart';
+import './profile.dart';
 
 import 'Utils/models.dart';
 

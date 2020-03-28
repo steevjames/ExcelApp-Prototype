@@ -4,6 +4,7 @@ import '../Home/Utils/constants.dart';
 import '../Home/Utils/data.dart';
 import '../Home/Utils/models.dart';
 import 'package:flutter/material.dart';
+import './registeredPage.dart';
 
 class FavouritePage extends StatefulWidget {
   @override
@@ -41,43 +42,85 @@ class FavouritePageState extends State<FavouritePage> {
     favListBuilder();
   }
 
-  @override
-  Widget build(BuildContext context) {
+
+  Widget schedule(index) {
+    List<Widget> returnWidget;
+    if(index==0) returnWidget= favListBuilder();
+    else if(index==1) returnWidget=[RegisteredPage()];
     return SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[Padding(padding: EdgeInsets.all(12))] + favListBuilder(),
+          children:
+              <Widget>[Padding(padding: EdgeInsets.all(12))] + returnWidget,
         ));
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return DefaultTabController(
+      initialIndex: 0,
+      length: 2,
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          bottom: TabBar(
+            indicatorSize: TabBarIndicatorSize.label,
+            indicatorWeight: 2,
+            indicatorColor: primaryColor,
+            labelColor: Color(0xff252a50),
+            labelStyle: TextStyle(fontSize: 20),
+            tabs: [
+              Tab(
+                text: 'Favourites',
+              ),
+              Tab(
+                text: 'Registered',
+              ),
+            ],
+          ),
+          title: Text(
+            'Excel 2020',
+            style: TextStyle(color: primaryColor),
+          ),
+          centerTitle: true,
+        ),
+        body: Container(
+          child: TabBarView(
+            children: [
+              schedule(0),
+              schedule(1),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 
   favListBuilder() {
     var favListWidget = List<Widget>();
     for (int i = 0; i < favEvents.length; i++) {
-      favListWidget.add(
-         GestureDetector(
-            child: Container(
-              padding: EdgeInsets.symmetric(vertical: 6, horizontal:16),
-              height: cardHeight,
-              child: Card(
-                  margin: EdgeInsets.all(4),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(cardRoundness)
-                  ),
-                  child: Stack(
-                    children: <Widget>[
-                      cardImage(favEvents[i].imageUrl),
-                      highLightCardContent(favEvents[i], i)
-                    ],
-                  )),
-            ),
-            onTap: () {
-              //Insert Function
-              print("U tapped ${favEvents[i].eventName}");
-            },
-          )
-      );
+      favListWidget.add(GestureDetector(
+        child: Container(
+          padding: EdgeInsets.symmetric(vertical: 6, horizontal: 16),
+          height: cardHeight,
+          child: Card(
+              margin: EdgeInsets.all(4),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(cardRoundness)),
+              child: Stack(
+                children: <Widget>[
+                  cardImage(favEvents[i].imageUrl),
+                  highLightCardContent(favEvents[i], i)
+                ],
+              )),
+        ),
+        onTap: () {
+          //Insert Function
+          print("U tapped ${favEvents[i].eventName}");
+        },
+      ));
     }
 
     return favListWidget;

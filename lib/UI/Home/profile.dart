@@ -1,4 +1,4 @@
-import 'package:excelapp_prototype/UI/Home/Utils/data.dart';
+import './Utils/data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -43,12 +43,14 @@ class MapScreenState extends State<ProfilePage>
                     height: 250.0,
                     color: Colors.white,
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: <Widget>[
+                        SizedBox(width: 1),
                         qrCode(user.qrUrl),
                         divider(),
-                        profilePic(user.imageUrl)
+                        profilePic(user.imageUrl),
+                        SizedBox(width: 1),
                       ],
                     ),
                   ),
@@ -179,7 +181,7 @@ class MapScreenState extends State<ProfilePage>
 
   divider() {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 24),
+      // margin: EdgeInsets.symmetric(horizontal: 24),
       width: 1,
       height: imageHeight,
       color: Colors.grey[300],
