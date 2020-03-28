@@ -1,3 +1,5 @@
+import 'package:excelapp_prototype/UI/Home/profile.dart';
+
 import 'Utils/models.dart';
 
 import 'Utils/constants.dart';
@@ -14,7 +16,7 @@ class HomePage extends StatelessWidget {
       backgroundColor: Colors.white,
       body: ListView(
         children: <Widget>[
-          homeTitle(),
+          homeTitle(context),
           //
           Container(height: 100),
           Padding(padding: EdgeInsets.only(bottom: 16)),
@@ -26,7 +28,7 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  homeTitle() {
+  homeTitle(BuildContext context) {
     double fontSize = 28;
     var fontWeight = FontWeight.w700;
     return Padding(
@@ -43,14 +45,30 @@ class HomePage extends StatelessWidget {
                 color: primaryColor,
                 fontFamily: pfontFamily,
               )),
-          IconButton(
-            icon: Icon(Icons.notifications_none),
-            iconSize: 28,
-            color: primaryColor,
-            onPressed: () {},
-          )
+          headingIcons(context)
         ],
       ),
+    );
+  }
+
+  headingIcons(BuildContext context) {
+    return Row(
+      children: <Widget>[
+        IconButton(
+          icon: Icon(Icons.person_outline),
+          iconSize: 30,
+          color: primaryColor,
+          onPressed: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilePage()));
+          },
+        ),
+        IconButton(
+          icon: Icon(Icons.notifications_none),
+          iconSize: 28,
+          color: primaryColor,
+          onPressed: () {},
+        )
+      ],
     );
   }
 
@@ -179,13 +197,13 @@ class Categories extends StatelessWidget {
   final titleStyle = TextStyle(
       color: Colors.white,
       fontFamily: pfontFamily,
-      fontSize: 28,
+      fontSize: 26,
       fontWeight: FontWeight.w600);
   final contentStyle = TextStyle(
       color: Colors.white,
       fontFamily: sfontFamily,
-      fontSize: 14,
-      fontWeight: FontWeight.w400);
+      fontSize: 13,
+      fontWeight: FontWeight.w500);
 
   @override
   Widget build(BuildContext context) {
@@ -209,9 +227,9 @@ class Categories extends StatelessWidget {
 
   categoryCard(int index, BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(16.0),
+      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
       child: Container(
-          height: 240,
+          height: 160,
           child: GestureDetector(
             child: Card(
                 margin: EdgeInsets.all(4),
@@ -232,10 +250,10 @@ class Categories extends StatelessWidget {
       padding: const EdgeInsets.all(20.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           Column(
-            mainAxisAlignment: MainAxisAlignment.end,
+            mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.max,
             children: <Widget>[
@@ -274,8 +292,8 @@ class Categories extends StatelessWidget {
 
 //Functions common to both
 cardImage(String url) {
-  var gradientcolor1 = Color(0xe61f1a59);
-  var gradientcolor2 = Color(0x801f1a59);
+  var gradientcolor1 = Color(0xf224234A);
+  var gradientcolor2 = Color(0xb324234A);
   var roundness = BorderRadius.circular(16);
   return Stack(children: <Widget>[
     CachedNetworkImage(

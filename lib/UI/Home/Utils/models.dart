@@ -26,4 +26,21 @@ class Event {
   }
 }
 
+class Person {
+  String name;
+  String imageUrl;
+  String qrUrl;
+  String email;
+  String phone;
+
+  Person({this.name, this.imageUrl,this.qrUrl, this.email, this.phone});
+
+  Person.fromMapObject(Map<String, dynamic> map){
+    this.name = map['name'];
+    this.imageUrl = map['imgUrl'];
+    this.qrUrl = map['qrUrl'];
+    this.phone = map['phone'];
+    this.email = map['email'];
+  }
+}
 
