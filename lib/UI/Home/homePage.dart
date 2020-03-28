@@ -131,6 +131,7 @@ class HighLightsState extends State<HighLights> {
         itemBuilder: (BuildContext build, index) {
           return GestureDetector(
             child: Card(
+              elevation: 0,
                 margin: EdgeInsets.all(4),
                 child: Stack(
                   children: <Widget>[
@@ -232,6 +233,7 @@ class Categories extends StatelessWidget {
           height: 160,
           child: GestureDetector(
             child: Card(
+              elevation: 0,
                 margin: EdgeInsets.all(4),
                 child: Stack(children: <Widget>[
                   cardImage(categoriesMap[index]["imageUrl"]),

@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 String fontBold = 'Quicksand-Bold';
 String fontLight = 'Quciksand-Light';
 
+Color primaryColor = Color(0xff252a50);
+
 class MoreDetails extends StatefulWidget {
   final eventDetails;
   MoreDetails({Key key, @required this.eventDetails}) : super(key: key);
@@ -87,111 +89,79 @@ class MoreDetailsState extends State<MoreDetails> {
 
           // More details card
           Container(
-              height: deviceHeight * .57,
-              padding: EdgeInsets.only(top: _minpadding),
-              child: Hero(
-                  tag: 'Card',
-                  child: Card(
-                      elevation: 5,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(45),
-                              topRight: Radius.circular(45))),
-                      child: Container(
-                          child: Column(
-                        children: <Widget>[
-                          SizedBox(height: 10),
-                          SingleChildScrollView(
-                            scrollDirection: Axis.horizontal,
-                            child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                children: <Widget>[
-                                  //Tabs in the More Details section
-                                  getTab('About', activeTab),
-                                  getTab('Format', activeTab),
-                                  getTab('Rules', activeTab),
-                                  getTab('Contacts', activeTab),
-                                ]),
-                          ),
-                          Column(children: <Widget>[
-                            Padding(
-                                padding: EdgeInsets.only(
-                                    top: _minpadding * 3,
-                                    left: _minpadding * 6,
-                                    right: _minpadding * 6,
-                                    bottom: _minpadding * 3),
-                                child: Text(
-                                  eventDetails[activeTab],
-                                  style: TextStyle(
-                                    fontFamily: fontLight,
-                                    color: Color.fromRGBO(23, 18, 41, 1),
-                                    fontSize: 17.0,
-                                    fontWeight: FontWeight.w300,
-                                  ),
-                                )),
-                          ])
+            height: deviceHeight * .57,
+            padding: EdgeInsets.only(top: _minpadding),
+            child: Hero(
+              tag: 'Card',
+              child: ClipRRect(
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(30),
+                    topRight: Radius.circular(30)),
+                child: DefaultTabController(
+                  initialIndex: 0,
+                  length: 4,
+                  child: Scaffold(
+                    appBar: PreferredSize(
+                      preferredSize: Size.fromHeight(60),
+                      child: AppBar(
+                        backgroundColor: Colors.white,
+                        elevation: 0,
+                        bottom: TabBar(
+                          indicatorSize: TabBarIndicatorSize.label,
+                          indicatorColor: primaryColor,
+                          labelColor: primaryColor,
+                          labelStyle: TextStyle(
+                              fontSize: 14, fontWeight: FontWeight.w500),
+                          tabs: [
+                            Tab(
+                              text: 'About',
+                            ),
+                            Tab(
+                              text: 'Format',
+                            ),
+                            Tab(
+                              text: 'Rules',
+                            ),
+                            Tab(
+                              text: 'Contacts',
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    body: Container(
+                      color: Colors.white,
+                      child: TabBarView(
+                        children: [
+                          details(eventDetails['About']),
+                          details(eventDetails['Format']),
+                          details(eventDetails['Rules']),
+                          details(eventDetails['Contacts'])
                         ],
-                      ))))),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
         ],
       )),
     ]));
   }
 
-//More details tab styling
-  Widget getTab(String tabName, String active) {
-    bool isClicked = active == tabName;
-    return Padding(
-      // padding: EdgeInsets.all(_minpadding),
-      padding: EdgeInsets.all(0),
-      child: ButtonTheme(
-        minWidth: _minpadding * 5,
-        height: _minpadding * 8,
-        child: FlatButton(
-            shape: new RoundedRectangleBorder(
-                borderRadius: new BorderRadius.circular(17.0),
-                side: BorderSide(color: Colors.transparent)),
-            color: Colors.transparent,
-            padding: EdgeInsets.all(_minpadding * 2),
-            onPressed: () {
-              setState(() {
-                activeTab = tabName;
-              });
-            },
-            child: Container(
-                decoration: BoxDecoration(
-                    border: Border(
-                        bottom: BorderSide(
-                            width: 1.0,
-                            color: isClicked
-                                ? Color.fromRGBO(21, 18, 41, 1)
-                                : Colors.transparent))),
-                child: getTabText(tabName, isClicked))),
+  Widget details(txt) {
+    return SingleChildScrollView(
+      child: Container(
+        margin: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+        child: Text(
+          txt*3,
+          style: TextStyle(color: primaryColor),
+        ),
       ),
     );
   }
 
-  //More details tab text styling
-  Widget getTabText(String text, bool isClicked) {
-    if (isClicked)
-      return Text(text,
-          style: TextStyle(
-              height: 1.0,
-              fontSize: 21.0,
-              fontFamily: fontBold,
-              fontWeight: FontWeight.w600,
-              color: Color.fromRGBO(23, 18, 41, 1)));
-    else
-      return Text(text,
-          style: TextStyle(
-              height: 1.0,
-              fontSize: 18.0,
-              fontFamily: fontLight,
-              fontWeight: FontWeight.w400,
-              color: Color.fromRGBO(23, 18, 41, 0.4)));
-  }
-
-  //Like button functionality
   Widget likeButton(String isLiked) {
     bool likeState = isLiked == 'true';
     return Container(
@@ -206,11 +176,7 @@ class MoreDetailsState extends State<MoreDetails> {
                 : Icon(Icons.favorite, color: Colors.red),
             onPressed: () {
               //Insert function that enables this event as favourite
-              /*
-
-                        Over Here
-
-                    */
+              //Over Here
               setState(() {
                 likeState = !likeState;
                 eventDetails['isLiked'] = '$likeState';
