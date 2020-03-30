@@ -1,7 +1,5 @@
-import './profile.dart';
-
+import '../Profile/profile.dart';
 import 'Utils/models.dart';
-
 import 'Utils/constants.dart';
 import 'Utils/data.dart';
 import 'package:flutter/material.dart';
@@ -55,7 +53,7 @@ class HomePage extends StatelessWidget {
     return Row(
       children: <Widget>[
         IconButton(
-          icon: Icon(Icons.person_outline),
+          icon: Icon(Icons.person),
           iconSize: 30,
           color: primaryColor,
           onPressed: () {
@@ -131,7 +129,6 @@ class HighLightsState extends State<HighLights> {
         itemBuilder: (BuildContext build, index) {
           return GestureDetector(
             child: Card(
-              elevation: 0,
                 margin: EdgeInsets.all(4),
                 child: Stack(
                   children: <Widget>[
@@ -233,7 +230,6 @@ class Categories extends StatelessWidget {
           height: 160,
           child: GestureDetector(
             child: Card(
-              elevation: 0,
                 margin: EdgeInsets.all(4),
                 child: Stack(children: <Widget>[
                   cardImage(categoriesMap[index]["imageUrl"]),

@@ -5,7 +5,10 @@ var userMap = {
   "qrUrl":
       "https://i1.wp.com/digiday.com/wp-content/uploads/2012/07/QR_Code.png?fit=654%2C653&ssl=1",
   "imgUrl":
-      "https://i.insider.com/5d152f42e06ee11bb36a1af7?width=1100&format=jpeg&auto=webp"
+      "https://i.insider.com/5d152f42e06ee11bb36a1af7?width=1100&format=jpeg&auto=webp",
+  "institutionId" : 123456789,
+  "institutionName": "Model Eng College",
+  "isCollege": true,
 };
 
 var sponserModalMap = [
