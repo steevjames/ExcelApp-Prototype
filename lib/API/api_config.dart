@@ -1,5 +1,5 @@
 
 class APIConfig {
 
-  String baseUrl = 'https://demo2916921.mockable.io/events';
+  String baseUrl = 'https://demo1680243.mockable.io/events';
 }

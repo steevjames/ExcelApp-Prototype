@@ -1,10 +1,12 @@
+import 'package:excelapp_prototype/API/testUI.dart';
+import 'package:excelapp_prototype/UI/Profile/profile.dart';
 import 'package:flutter/material.dart';
 import './UI/Home/home.dart';
 import './UI/EventPage/eventPage.dart';
 import './UI/Timeline/timeline.dart';
 import './UI/Competitions/competitionsScreen.dart';
 import 'UI/Favourites/favouritesPage.dart';
-import 'UI/Home/profile.dart';
+// import 'UI/Home/profile.dart';
 
 void main() => runApp(MyApp());
 
@@ -18,7 +20,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: DemoPage(),
+      // home: DemoPage(),
+      home: TestAPI(),
       routes: {
         // '/': (BuildContext context) => MyHomePage(),
       },

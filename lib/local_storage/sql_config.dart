@@ -7,6 +7,9 @@ class DBProvider {
   DBProvider._();
 
   static final DBProvider db = DBProvider._();
+  factory DBProvider() {
+    return db;  
+  }
 
   Database _database;
 
@@ -51,10 +54,16 @@ class DBProvider {
     final db = await database;
 
     // all the rows from table -- list of maps
-    final List<Map<String,dynamic>> maps = await db.query('EventList');
-
+    final List<Map<String,dynamic>> res = await db.query('EventList');
+ 
     // convert list of maps to list of events
-    return maps.map<Event>((row) => Event.fromJson(row)).toList();
+    return res.map<Event>((row) => Event.fromJson(row)).toList();
+  }
+
+  //delete an event from table
+  Future<void> removeEvent(int id) async {
+    final db = await database;
+    await db.delete('EventList',where: 'id = ?',whereArgs: [id]);
   }
 
 }

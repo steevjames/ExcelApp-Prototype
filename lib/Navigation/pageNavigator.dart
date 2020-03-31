@@ -1,7 +1,8 @@
+import 'package:excelapp_prototype/UI/Profile/profile.dart';
 import 'package:flutter/material.dart';
 import '../UI/Home/homePage.dart';
 import '../UI/Timeline/timeline.dart';
-import '../UI/Home/profile.dart';
+// import '../UI/Home/profile.dart';
 import '../UI/Favourites/favouritesPage.dart';
 
 class NavigatingPage extends StatelessWidget {
