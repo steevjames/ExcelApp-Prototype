@@ -1,7 +1,7 @@
 import '../Home/Utils/data.dart';
 import 'package:flutter/material.dart';
 
-import '../Home/Utils/constants.dart';
+import '../../constants.dart';
 import '../Home/Utils/models.dart';
 
 class EditProfilePage extends StatefulWidget {

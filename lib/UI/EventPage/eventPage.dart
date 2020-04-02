@@ -2,6 +2,7 @@ import 'package:excelapp_prototype/UI/EventPage/eventDescription.dart';
 import 'package:flutter/material.dart';
 import 'moreDetailsPage.dart';
 import 'backgroundImage.dart';
+import '../../constants.dart';
 
 Map<String, String> eventDetails = {
   'ImageDir':
@@ -41,6 +42,7 @@ class EventPageState extends State<EventPage> {
       getBackgroundImage(eventDetails, [
         Color.fromRGBO(0, 0, 0, 0),
         Color.fromRGBO(23, 18, 41, .8),
+        // primaryColor,
         Color.fromRGBO(0, 0, 0, .8)
       ]),
       Container(
@@ -69,7 +71,7 @@ class EventPageState extends State<EventPage> {
                       child: Text(eventDetails['Name'],
                           style: TextStyle(
                               decoration: TextDecoration.none,
-                              fontFamily: fontBold,
+                              fontFamily: pfontFamily,
                               height: 1.0,
                               fontSize: 40.0,
                               fontWeight: FontWeight.w800,
@@ -102,6 +104,7 @@ class EventPageState extends State<EventPage> {
                       borderRadius: BorderRadius.circular(16.0),
                       side: BorderSide(color: Colors.white, width: .5)),
                   color: Color.fromRGBO(21, 18, 41, 1),
+                  // color: primaryColor,
                   textColor: Colors.white,
                   padding: EdgeInsets.all(_minpadding * 2),
                   onPressed: () {
@@ -115,7 +118,7 @@ class EventPageState extends State<EventPage> {
                   child: Text(
                     "More Details",
                     style: TextStyle(
-                      fontFamily: fontLight,
+                      fontFamily: sfontFamily,
                       decoration: TextDecoration.none,
                       fontSize: 18.0,
                     ),
@@ -136,7 +139,7 @@ class EventPageState extends State<EventPage> {
                   child: Text(
                     "Book Tickets",
                     style: TextStyle(
-                      fontFamily: fontLight,
+                      fontFamily: sfontFamily,
                       decoration: TextDecoration.none,
                       fontSize: 18.0,
                     ),

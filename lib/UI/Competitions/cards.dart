@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../constants.dart';
 
 double cardHeight = 95;
 double imgCardWidth = 275;
@@ -6,10 +7,8 @@ double sideCardWidth = 75;
 Color theme = Color.fromRGBO(15, 10, 70, 1);
 
 Stack cardImage(String url) {
-  Color gradientcolor1 = theme; // Color(0xe61f1a59);
-  Color gradientcolor2 = theme;
-  // var gradientcolor1 = Color(0xe61f1a59);
-  // var gradientcolor2 = Color(0x801f1a59);
+  Color gradientcolor1 = primaryColor;
+  Color gradientcolor2 = primaryColor;
   BorderRadius roundness = BorderRadius.circular(16);
   return Stack(children: <Widget>[
     Opacity(

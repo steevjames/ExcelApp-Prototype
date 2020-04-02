@@ -20,8 +20,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      // home: DemoPage(),
-      home: TestAPI(),
+      home: DemoPage(),
+      // home: TestAPI(),
       routes: {
         // '/': (BuildContext context) => MyHomePage(),
       },

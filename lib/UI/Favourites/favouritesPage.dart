@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 
-import '../Home/Utils/constants.dart';
+import '../../constants.dart';
 import '../Home/Utils/data.dart';
 import '../Home/Utils/models.dart';
 import 'package:flutter/material.dart';
@@ -69,7 +69,7 @@ class FavouritePageState extends State<FavouritePage> {
             indicatorSize: TabBarIndicatorSize.label,
             indicatorWeight: 2,
             indicatorColor: primaryColor,
-            labelColor: Color(0xff252a50),
+            labelColor: primaryColor,
             labelStyle: TextStyle(fontSize: 20),
             tabs: [
               Tab(
@@ -171,8 +171,6 @@ class FavouritePageState extends State<FavouritePage> {
   }
 
   cardImage(String url) {
-    var gradientcolor1 = Color(0xf224234A);
-    var gradientcolor2 = Color(0xb324234A);
     var roundness = BorderRadius.circular(16);
     return Stack(children: <Widget>[
       CachedNetworkImage(

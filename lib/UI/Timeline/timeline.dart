@@ -1,4 +1,4 @@
-import 'package:excelapp_prototype/UI/Home/Utils/constants.dart';
+import './../../constants.dart';
 import 'package:flutter/material.dart';
 
 import './generateTimetableList.dart';
@@ -12,83 +12,52 @@ class Timeline extends StatefulWidget {
 
 class _TimelineState extends State<Timeline> {
   List<Map<String, String>> timeTableData = sampleDataDay1;
-  String daynumber = '01';
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        body: SingleChildScrollView(
-          child: Column(
-            children: <Widget>[
-              SafeArea(child: Center()),
-              Container(
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 25),
-                decoration: BoxDecoration(color: Colors.grey[200]),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: <Widget>[
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(20, 0, 0, 15),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Text(
-                            'Timeline',
-                            style: TextStyle(
-                                fontSize: 30,
-                                fontFamily: pfontFamily,
-                                color: Color(0xff282849),
-                                fontWeight: FontWeight.w600),
-                          ),
-                          // Text(
-                          //   daynumber,
-                          //   style: TextStyle(
-                          //       fontSize: 20,
-                          //       color: Color(0xff282849),
-                          //       fontWeight: FontWeight.w300),
-                          // )
-                        ],
-                      ),
-                    ),
-                    SizedBox(height: 10),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        InkWell(
-                          onTap: () {
-                            setState(() {
-                              timeTableData = sampleDataDay1;
-                              daynumber = '01';
-                            });
-                          },
-                          child: _day('01'),
-                        ),
-                        SizedBox(width: 15),
-                        InkWell(
-                          onTap: () {
-                            setState(() {
-                              timeTableData = sampleDataDay2;
-                              daynumber = '02';
-                            });
-                          },
-                          child: _day('02'),
-                        ),
-                        SizedBox(width: 15),
-                        InkWell(
-                          onTap: () {
-                            setState(() {
-                              timeTableData = sampleDataDay3;
-                              daynumber = '03';
-                            });
-                          },
-                          child: _day('03'),
-                        ),
-                      ],
-                    )
-                  ],
-                ),
+    return DefaultTabController(
+      initialIndex: 0,
+      length: 3,
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          bottom: TabBar(
+            indicatorSize: TabBarIndicatorSize.label,
+            indicatorWeight: 3,
+            indicatorColor: primaryColor,
+            labelColor: Color(0xff252a50),
+            labelStyle: TextStyle(
+                fontSize: 15,
+                fontFamily: pfontFamily,
+                color: Color(0xff282849),
+                fontWeight: FontWeight.w600),
+            tabs: [
+              Tab(
+                text: 'Day 1',
               ),
-              TimeTableList(timeTableData)
+              Tab(
+                text: 'Day 2',
+              ),
+              Tab(
+                text: 'Day 3',
+              ),
+            ],
+          ),
+          title: Text(
+            'Timeline',
+            style: TextStyle(
+                fontSize: 20,
+                fontFamily: pfontFamily,
+                color: Color(0xff282849),
+                fontWeight: FontWeight.w600),
+          ),
+          centerTitle: true,
+        ),
+        body: Container(
+          child: TabBarView(
+            children: [
+              schedule(1),
+              schedule(2),
+              schedule(3),
             ],
           ),
         ),
@@ -96,33 +65,21 @@ class _TimelineState extends State<Timeline> {
     );
   }
 
-  Widget _day(dayno) {
-    return Transform.scale(
-      child: Card(
-          child: Container(
-            padding: EdgeInsets.fromLTRB(15, 22, 15, 22),
-            child: Column(
-              children: <Widget>[
-                Text(
-                  'Day',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontFamily: pfontFamily,
-                      fontSize: 15),
-                ),
-                Text(
-                  dayno,
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                ),
-              ],
-            ),
-          ),
-          elevation: dayno == daynumber ? 5 : 1,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(40),
-          )),
-      scale: dayno == daynumber ? 1.15 : 1,
+  Widget schedule(dayNumber) {
+    Widget returnWidget;
+    if (dayNumber == 1)
+      returnWidget = TimeTableList(sampleDataDay1);
+    else if (dayNumber == 2)
+      returnWidget = TimeTableList(sampleDataDay2);
+    else if (dayNumber == 3) returnWidget = TimeTableList(sampleDataDay3);
+    return SingleChildScrollView(
+      scrollDirection: Axis.vertical,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children:
+            <Widget>[Padding(padding: EdgeInsets.all(8))] + [returnWidget],
+      ),
     );
   }
 }

@@ -1,9 +1,10 @@
 import "package:flutter/material.dart";
 import 'listView.dart';
+import '../../constants.dart';
 
 String selection = "All";
 
-Color theme = Color.fromRGBO(15, 10, 70, 1);
+Color theme = primaryColor;
 
 class Competitions extends StatelessWidget {
   @override

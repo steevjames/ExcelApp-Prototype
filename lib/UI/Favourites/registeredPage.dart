@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:cached_network_image/cached_network_image.dart';
 
-import '../Home/Utils/constants.dart';
+import '../../constants.dart';
 import '../Home/Utils/data.dart';
 import '../Home/Utils/models.dart';
 
@@ -105,8 +105,6 @@ class RegisteredPageState extends State<RegisteredPage> {
   }
 
   cardImage(String url) {
-    var gradientcolor1 = Color(0xf224234A);
-    var gradientcolor2 = Color(0xb324234A);
     var roundness = BorderRadius.circular(16);
     return Stack(children: <Widget>[
       CachedNetworkImage(

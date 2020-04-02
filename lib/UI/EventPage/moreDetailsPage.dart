@@ -1,11 +1,8 @@
 import 'package:excelapp_prototype/UI/EventPage/backgroundImage.dart';
 import 'package:excelapp_prototype/UI/EventPage/eventDescription.dart';
 import 'package:flutter/material.dart';
+import '../../constants.dart';
 
-String fontBold = 'Quicksand-Bold';
-String fontLight = 'Quciksand-Light';
-
-Color primaryColor = Color(0xff252a50);
 
 class MoreDetails extends StatefulWidget {
   final eventDetails;
@@ -34,6 +31,7 @@ class MoreDetailsState extends State<MoreDetails> {
       getBackgroundImage(eventDetails, [
         Color.fromRGBO(0, 0, 0, 1),
         Color.fromRGBO(23, 18, 41, 0.8),
+        // primaryColor,
         Color.fromRGBO(0, 0, 0, .6)
       ]),
 
@@ -53,7 +51,7 @@ class MoreDetailsState extends State<MoreDetails> {
                       child: Text(eventDetails['Name'],
                           style: TextStyle(
                               decoration: TextDecoration.none,
-                              fontFamily: fontBold,
+                              fontFamily: pfontFamily,
                               height: 1.0,
                               fontSize: 40.0,
                               fontWeight: FontWeight.w800,
@@ -89,7 +87,7 @@ class MoreDetailsState extends State<MoreDetails> {
 
           // More details card
           Container(
-            height: deviceHeight * .57,
+            height: deviceHeight * .65,
             padding: EdgeInsets.only(top: _minpadding),
             child: Hero(
               tag: 'Card',
@@ -155,7 +153,7 @@ class MoreDetailsState extends State<MoreDetails> {
       child: Container(
         margin: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
         child: Text(
-          txt*3,
+          txt,
           style: TextStyle(color: primaryColor),
         ),
       ),

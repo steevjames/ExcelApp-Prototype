@@ -1,6 +1,6 @@
 import '../Profile/profile.dart';
 import 'Utils/models.dart';
-import 'Utils/constants.dart';
+import '../../constants.dart';
 import 'Utils/data.dart';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -129,6 +129,7 @@ class HighLightsState extends State<HighLights> {
         itemBuilder: (BuildContext build, index) {
           return GestureDetector(
             child: Card(
+              elevation: 0,
                 margin: EdgeInsets.all(4),
                 child: Stack(
                   children: <Widget>[
@@ -175,9 +176,7 @@ class HighLightsState extends State<HighLights> {
                   onPressed: () {
                     //Insert function that enables this event as favourite
                     /*
-
                         Over Here
-
                     */
                     setState(() {
                       isLiked[index] = !isLiked[index];
@@ -230,6 +229,7 @@ class Categories extends StatelessWidget {
           height: 160,
           child: GestureDetector(
             child: Card(
+              elevation: 0,
                 margin: EdgeInsets.all(4),
                 child: Stack(children: <Widget>[
                   cardImage(categoriesMap[index]["imageUrl"]),
@@ -290,8 +290,7 @@ class Categories extends StatelessWidget {
 
 //Functions common to both
 cardImage(String url) {
-  var gradientcolor1 = Color(0xf224234A);
-  var gradientcolor2 = Color(0xb324234A);
+  
   var roundness = BorderRadius.circular(16);
   return Stack(children: <Widget>[
     CachedNetworkImage(

@@ -1,4 +1,4 @@
-import 'package:excelapp_prototype/UI/Home/Utils/constants.dart';
+import '../../constants.dart';
 import 'package:flutter/material.dart';
 
 List<Widget> eventList;
@@ -52,7 +52,7 @@ class EventState extends State<Event> {
   final String _content;
   final String _imgurl;
 
-  double circleDiameter = 12;
+  double circleDiameter = 7;
   double circleTopMargin = 52;
 
   Size cardSize;
@@ -81,7 +81,7 @@ class EventState extends State<Event> {
           child: Container(
               padding: EdgeInsets.fromLTRB(30, 25, 0, 25),
               decoration: BoxDecoration(
-                color: Color(0xdd282849),
+                color:timelineCardColor,
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(24.0),
                   topRight: Radius.zero,
@@ -120,7 +120,9 @@ class EventState extends State<Event> {
               height: circleDiameter,
               width: circleDiameter,
               decoration: BoxDecoration(
-                  color: primaryColor, borderRadius: BorderRadius.circular(30)),
+                color: primaryColor,
+                borderRadius: BorderRadius.circular(30),
+              ),
             )),
       ],
     );

@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'registeredPage.dart';
 import 'package:flutter/material.dart';
-import '../Home/Utils/constants.dart';
+import '../../constants.dart';
 import '../Home/Utils/models.dart';
 import '../Home/Utils/data.dart';
 import 'editProfile.dart';

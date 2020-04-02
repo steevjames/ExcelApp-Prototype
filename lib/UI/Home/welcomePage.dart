@@ -1,8 +1,10 @@
+  
 import 'package:cached_network_image/cached_network_image.dart';
 import 'Utils/models.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'Utils/constants.dart';
+import '../../constants.dart';
 import 'Utils/data.dart';
 
 class WelcomeCard extends StatelessWidget {

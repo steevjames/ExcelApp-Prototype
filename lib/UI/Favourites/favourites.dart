@@ -1,6 +1,6 @@
 import './registeredPage.dart';
 
-import '../Home/Utils/constants.dart';
+import '../../constants.dart';
 import 'package:flutter/material.dart';
 
 import 'favouritesPage.dart';
