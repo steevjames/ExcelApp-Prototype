@@ -38,6 +38,9 @@ class DBProvider {
       "icon TEXT,"
       "category TEXT"
       ")");
+    await db.execute("CREATE TABLE Events("
+      "id INTEGER PRIMARY KEY,"
+      "name TEXT,");
     });
   }
 
@@ -48,6 +51,17 @@ class DBProvider {
     await db.insert('EventList', event.toJson(),conflictAlgorithm: ConflictAlgorithm.replace);
   }
 
+  // add list of events from api call to database
+  addAllEvents(List<Event> events) async {
+    final db = await database;
+    Batch batch = db.batch();
+    for(var event in events)
+    {
+      batch.insert('EventList', event.toJson(),conflictAlgorithm: ConflictAlgorithm.replace);
+    }
+    await batch.commit(noResult: true);
+  }
+
 
   // get list of all events from database
   Future<List<Event>> getEvents() async {
@@ -55,8 +69,6 @@ class DBProvider {
 
     // all the rows from table -- list of maps
     final List<Map<String,dynamic>> res = await db.query('EventList');
- 
-    // convert list of maps to list of events
     return res.map<Event>((row) => Event.fromJson(row)).toList();
   }
 
@@ -64,6 +76,11 @@ class DBProvider {
   Future<void> removeEvent(int id) async {
     final db = await database;
     await db.delete('EventList',where: 'id = ?',whereArgs: [id]);
+  }
+
+  // add single event to database
+  addSingleRecord(Event event) async {
+    
   }
 
 }
