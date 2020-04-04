@@ -5,18 +5,15 @@ import 'package:excelapp_prototype/API/api_config.dart';
 
 class EventDetailsAPI {
   static Future<EventDetails> fetchEventDetails(String endpoint) async {
-    APIConfig config = APIConfig();
+    // APIConfig config = APIConfig();
     var response;
-    print("fetching...");
     try {
       response = await http.get("https://demo1680243.mockable.io/events/1");
     } catch (e) {
       print("Error $e");
     }
-    print("fetched");
     Map<String,dynamic> responseData = json.decode(response.body);
     EventDetails event = EventDetails.fromJson(responseData);
-    print(event.name);
     return event;
   }
 }
@@ -67,8 +64,8 @@ class EventDetails {
       'name': name,
       'category': category,
       'venue': venue,
-      'prize': prize,
-      'date': dateTime,
+      'prize_money': prize,
+      'date_time': dateTime,
       'about': about,
       'format': format,
       'rules': rules,

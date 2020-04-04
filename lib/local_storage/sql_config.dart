@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:excelapp_prototype/API/Events/eventsList_Class.dart';
+import 'package:excelapp_prototype/API/eventDetails/eventDetails.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
@@ -27,7 +28,7 @@ class DBProvider {
     // android SQLite path
     String databasePath = await getDatabasesPath();
     // Our database path
-    String path = join(databasePath, 'TestDB.db');
+    String path = join(databasePath, 'TestlastDB.db');
 
     // once database is created, we define our tables inside it
     return await openDatabase(path,version: 1,onOpen: (db){},
@@ -36,14 +37,26 @@ class DBProvider {
       "id INTEGER PRIMARY KEY,"
       "name TEXT,"
       "icon TEXT,"
-      "category TEXT"
+      "category TEXT" 
       ")");
-    await db.execute("CREATE TABLE Events("
+    await db.execute("CREATE TABLE EventsDetails("
       "id INTEGER PRIMARY KEY,"
-      "name TEXT,");
+      "name TEXT,"
+      "category TEXT,"
+      "venue TEXT,"
+      "prize_money TEXT,"
+      "date_time TEXT,"
+      "about TEXT,"
+      "format TEXT,"
+      "rules TEXT"
+      ")");
     });
   }
 
+  void dispose() async {
+    final db = await database;
+    db.close();
+  }
 
   // add event to database
   addEvent(Event event) async {
@@ -64,11 +77,11 @@ class DBProvider {
 
 
   // get list of all events from database
-  Future<List<Event>> getEvents() async {
+  Future<List<Event>> getEvents(String table) async {
     final db = await database;
 
     // all the rows from table -- list of maps
-    final List<Map<String,dynamic>> res = await db.query('EventList');
+    final List<Map<String,dynamic>> res = await db.query(table);
     return res.map<Event>((row) => Event.fromJson(row)).toList();
   }
 
@@ -79,8 +92,18 @@ class DBProvider {
   }
 
   // add single event to database
-  addSingleRecord(Event event) async {
-    
+  addSingleRecord(EventDetails eventDetails,String table) async {
+    final db = await database;
+    await db.insert(table, eventDetails.toJson(),conflictAlgorithm: ConflictAlgorithm.replace);
+  }
+
+  // retrieve single event from database
+  Future<EventDetails> getEventDetails(String table,int id) async {
+    final db = await database;
+    List<Map<String,dynamic>> res = await db.query(table,where: 'id = ?',whereArgs: [id]);
+    Map<String,dynamic> event = res[0];
+    EventDetails eventDetails = EventDetails.fromJson(event);
+    return eventDetails;
   }
 
 }
