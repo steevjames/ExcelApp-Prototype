@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import '../../constants.dart';
 
 class ScoreDialog extends StatelessWidget {
   @override
@@ -25,7 +25,7 @@ class ScoreDialog extends StatelessWidget {
                     Text(
                       'Thank You',
                       style: TextStyle(
-                        color: Colors.indigo[900],
+                        color: primaryColor,
                         fontSize: 40,
                         fontWeight: FontWeight.bold
                       ),
@@ -38,7 +38,7 @@ class ScoreDialog extends StatelessWidget {
                     Text(
                       'For Participating',
                       style: TextStyle(
-                        color: Colors.indigo[900],
+                        color: primaryColor,
                         fontSize: 20,
                       ),
                     ),
@@ -55,14 +55,14 @@ class ScoreDialog extends StatelessWidget {
                           Text(
                             'Questions Attended',
                             style: TextStyle(
-                              color: Colors.indigo[900],
+                              color: primaryColor,
                               fontSize: 15,
                             ),
                           ),
                           Text(
                             'Answers Correct',
                             style: TextStyle(
-                              color: Colors.indigo[900],
+                              color: primaryColor,
                               fontSize: 15,
                             ),
                           ),
@@ -73,14 +73,14 @@ class ScoreDialog extends StatelessWidget {
                           Text(
                             ':',
                             style: TextStyle(
-                              color: Colors.indigo[900],
+                              color: primaryColor,
                               fontSize: 15,
                             ),
                           ),
                           Text(
                             ':',
                             style: TextStyle(
-                              color: Colors.indigo[900],
+                              color: primaryColor,
                               fontSize: 15,
                             ),
                           ),
@@ -91,14 +91,14 @@ class ScoreDialog extends StatelessWidget {
                           Text(
                             '10',
                             style: TextStyle(
-                              color: Colors.indigo[900],
+                              color: primaryColor,
                               fontSize: 15,
                             ),
                           ),
                           Text(
                             '8',
                             style: TextStyle(
-                              color: Colors.indigo[900],
+                              color: primaryColor,
                               fontSize: 15,
                             ),
                           ),
@@ -122,7 +122,7 @@ class ScoreDialog extends StatelessWidget {
                         Text(
                           'Total Score',
                           style: TextStyle(
-                            color: Colors.indigo[900],
+                            color: primaryColor,
                             fontSize: 15,
                           ),
                         ),
@@ -133,7 +133,7 @@ class ScoreDialog extends StatelessWidget {
                         Text(
                           ':',
                           style: TextStyle(
-                            color: Colors.indigo[900],
+                            color: primaryColor,
                             fontSize: 15,
                           ),
                         ),
@@ -144,7 +144,7 @@ class ScoreDialog extends StatelessWidget {
                         Text(
                           '22',
                           style: TextStyle(
-                            color: Colors.indigo[900],
+                            color: primaryColor,
                             fontSize: 15,
                           ),
                         ),
@@ -171,15 +171,15 @@ class ScoreDialog extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           Icon(
-                            FontAwesomeIcons.arrowLeft,
+                            Icons.arrow_back,
                             size: 12,
-                            color: Colors.indigo[900],
+                            color: primaryColor,
                           ),
                           VerticalDivider(),
                           Text(
                             'Back to Home',
                             style: TextStyle(
-                              color: Colors.indigo[900],
+                              color: primaryColor,
                               fontWeight: FontWeight.bold,
                             ),
                           ),

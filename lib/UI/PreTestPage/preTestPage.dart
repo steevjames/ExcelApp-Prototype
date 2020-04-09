@@ -1,11 +1,11 @@
 import 'package:excelapp_prototype/UI/PreTestPage/scoreDialog.dart';
 import 'package:flutter/material.dart';
+import '../../constants.dart';
 
 class PreTestPage extends StatelessWidget {
   final Map<String, String> eventMap = {
     'name': 'Kryptos',
-    'description': 
-    '''
+    'description': '''
 Est et quasi laborum quas error ut velit molestiae. 
 Aut et delectus ratione id tempore enim vel qui. 
 Voluptatem sapiente eius rerum optio.
@@ -26,28 +26,33 @@ Est quisquam quia repellendus est ut dolorem.
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.indigo[900],
-        centerTitle: true,
-        elevation: 0,
-        title: Text(
-          eventMap['name'],
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 40,
-          ),
-        ),
-      ),
-      backgroundColor: Colors.indigo[900],
+      backgroundColor: primaryColor,
       body: SingleChildScrollView(
         child: Container(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
+              SafeArea(
+                child: Center(),
+              ),
+              Container(
+                margin: EdgeInsets.fromLTRB(0, 15, 0, 0),
+                color: primaryColor,
+                child: Center(
+                  child: Text(
+                    'Kryptos',
+                    style: TextStyle(
+                        fontSize: 40,
+                        color: Colors.white,
+                        fontFamily: pfontFamily),
+                  ),
+                ),
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Padding(
-                    padding: const EdgeInsets.only(top : 30),
+                    padding: const EdgeInsets.only(top: 30),
                     child: Text(
                       'Instructions',
                       style: TextStyle(
@@ -65,29 +70,20 @@ Est quisquam quia repellendus est ut dolorem.
                 indent: (MediaQuery.of(context).size.width / 2) - 15,
                 endIndent: (MediaQuery.of(context).size.width / 2) - 15,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-                    child: SizedBox(
-                      height: (MediaQuery.of(context).size.height / 2.5),
-                      width: (MediaQuery.of(context).size.width / 1.3),
-                      child: SingleChildScrollView(
-                        child: Text(
-                          eventMap['description'],
-                          style: TextStyle(
-                            color: Colors.white,
-                          ), 
-                          textAlign: TextAlign.left,
-                        ),
-                      ),
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 35, vertical: 10),
+                height: (MediaQuery.of(context).size.height / 2.5),
+                child: SingleChildScrollView(
+                  child: Text(
+                    eventMap['description'] * 3,
+                    style: TextStyle(
+                      color: Colors.white,
                     ),
                   ),
-                ],
+                ),
               ),
               Padding(
-                padding: const EdgeInsets.fromLTRB(25, 50, 25, 0),
+                padding: const EdgeInsets.fromLTRB(25, 35, 25, 0),
                 child: IntrinsicHeight(
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -109,10 +105,9 @@ Est quisquam quia repellendus est ut dolorem.
                               Text(
                                 eventMap['duration'],
                                 style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 25,
-                                  fontWeight: FontWeight.bold
-                                ),
+                                    color: Colors.white,
+                                    fontSize: 25,
+                                    fontWeight: FontWeight.bold),
                               ),
                             ],
                           ),
@@ -129,7 +124,7 @@ Est quisquam quia repellendus est ut dolorem.
                               Text(
                                 'Total Questions',
                                 style: TextStyle(
-                                  color: Colors.white,                                
+                                  color: Colors.white,
                                 ),
                               ),
                             ],
@@ -139,10 +134,9 @@ Est quisquam quia repellendus est ut dolorem.
                               Text(
                                 '10',
                                 style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 25,
-                                  fontWeight: FontWeight.bold
-                                ),
+                                    color: Colors.white,
+                                    fontSize: 25,
+                                    fontWeight: FontWeight.bold),
                               ),
                             ],
                           ),
@@ -160,9 +154,9 @@ Est quisquam quia repellendus est ut dolorem.
                     RaisedButton(
                       onPressed: () {
                         Navigator.push(
-                          context, 
-                          MaterialPageRoute(builder: (context) => ScoreDialog())
-                        );
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ScoreDialog()));
                       },
                       color: Colors.white,
                       padding: EdgeInsets.fromLTRB(30, 0, 30, 0),
@@ -174,7 +168,7 @@ Est quisquam quia repellendus est ut dolorem.
                         ),
                       ),
                       shape: RoundedRectangleBorder(
-                        borderRadius: new BorderRadius.circular(12.0), 
+                        borderRadius: new BorderRadius.circular(12.0),
                       ),
                     ),
                   ],
