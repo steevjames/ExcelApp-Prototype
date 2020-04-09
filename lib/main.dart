@@ -82,6 +82,14 @@ class DemoPage extends StatelessWidget {
                         MaterialPageRoute(
                             builder: (context) => FavouritePage()));
                   }),
+              RaisedButton(
+                  child: Text('Excel Play'),
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ExcelPlayPage()));
+                  }),
             ],
           ),
         ));
