@@ -6,7 +6,7 @@ import './UI/EventPage/eventPage.dart';
 import './UI/Timeline/timeline.dart';
 import './UI/Competitions/competitionsScreen.dart';
 import 'UI/Favourites/favouritesPage.dart';
-// import 'UI/Home/profile.dart';
+import 'UI/TetstsList/listOfTests.dart';
 
 void main() => runApp(MyApp());
 
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       // home: DemoPage(),
-      home: TestAPI(),
+      home: DemoPage(),
       routes: {
         // '/': (BuildContext context) => MyHomePage(),
       },
@@ -83,12 +83,12 @@ class DemoPage extends StatelessWidget {
                             builder: (context) => FavouritePage()));
                   }),
               RaisedButton(
-                  child: Text('Excel Play'),
+                  child: Text('List of Tests'),
                   onPressed: () {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => ExcelPlayPage()));
+                            builder: (context) => ListOfTests()));
                   }),
             ],
           ),

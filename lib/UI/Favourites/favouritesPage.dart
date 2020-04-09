@@ -17,8 +17,6 @@ class FavouritePageState extends State<FavouritePage> {
 
   final double cardHeight = 160;
   final double cardRoundness = 24;
-  final headingStyle = TextStyle(
-      fontWeight: FontWeight.w700, fontSize: 24, fontFamily: pfontFamily);
   final titleStyle = TextStyle(
       color: Colors.white,
       fontFamily: pfontFamily,
