@@ -17,6 +17,7 @@ dependencies:
   url_launcher: ^5.4.2
   carousel_slider: ^1.4.1
   sticky_headers: ^0.1.8+1
+  font_awesome_flutter:
 
   # Backend
   sqflite: ^1.3.0

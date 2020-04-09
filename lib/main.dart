@@ -6,7 +6,9 @@ import './UI/EventPage/eventPage.dart';
 import './UI/Timeline/timeline.dart';
 import './UI/Competitions/competitionsScreen.dart';
 import 'UI/Favourites/favouritesPage.dart';
+import 'UI/PreTestPage/preTestPage.dart';
 import 'UI/TetstsList/listOfTests.dart';
+import 'UI/PreTestPage/preTestPage.dart';
 
 void main() => runApp(MyApp());
 
@@ -90,6 +92,17 @@ class DemoPage extends StatelessWidget {
                         MaterialPageRoute(
                             builder: (context) => ListOfTests()));
                   }),
+              RaisedButton(
+                child: Text('Pre Test Page'),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => PreTestPage()
+                    )
+                  );
+                }
+              ),
             ],
           ),
         ));
