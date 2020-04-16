@@ -1,4 +1,4 @@
-import 'package:cached_network_image/cached_network_image.dart';
+// import 'package:cached_network_image/cached_network_image.dart';
 import 'package:connectivity/connectivity.dart';
 import 'package:excelapp_prototype/API/Events/eventsList_Class.dart';
 import 'package:excelapp_prototype/API/eventDetails/eventDetails.dart';

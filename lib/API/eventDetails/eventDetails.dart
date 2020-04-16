@@ -1,6 +1,6 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'package:excelapp_prototype/API/api_config.dart';
+// import 'package:excelapp_prototype/API/api_config.dart';
 
 class EventDetailsAPI {
   static Future<EventDetails> fetchEventDetails(String endpoint) async {

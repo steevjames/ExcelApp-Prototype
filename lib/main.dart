@@ -8,7 +8,7 @@ import './UI/Competitions/competitionsScreen.dart';
 import 'UI/Favourites/favouritesPage.dart';
 import 'UI/PreTestPage/preTestPage.dart';
 import 'UI/TetstsList/listOfTests.dart';
-import 'UI/PreTestPage/preTestPage.dart';
+import 'UI/TestPage/testPage.dart';
 
 void main() => runApp(MyApp());
 
@@ -84,25 +84,32 @@ class DemoPage extends StatelessWidget {
                         MaterialPageRoute(
                             builder: (context) => FavouritePage()));
                   }),
-              RaisedButton(
-                  child: Text('List of Tests'),
+                                RaisedButton(
+                  child: Text('Test UI'),
                   onPressed: () {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => ListOfTests()));
+                            builder: (context) => TestAPI()));
                   }),
               RaisedButton(
-                child: Text('Pre Test Page'),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => PreTestPage()
-                    )
-                  );
-                }
-              ),
+                  child: Text('List of Tests'),
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => ListOfTests()));
+                  }),
+              RaisedButton(
+                  child: Text('Pre Test Page'),
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => PreTestPage()));
+                  }),
+              RaisedButton(
+                  child: Text('Test Page'),
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => TestPage()));
+                  }),
             ],
           ),
         ));
